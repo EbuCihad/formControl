@@ -1,0 +1,139 @@
+﻿@using form.Entities
+@using form.BusinessLayer
+
+@model indexshake
+@{
+    ViewBag.Title = "Index";
+    List<myform> user = Model.myformmanager.GetAllMyForm(); 
+}
+
+<!-- Page Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            @*kategoriler*@
+            <p class="lead">Seçenekler</p>
+            <div class="list-group">
+                <a href="#" class="list-group-item">
+                    <span class="glyphicon glyphicon-arrow-right"></span>Category 1
+                </a>
+                <a href="#" class="list-group-item">
+                    <span class="glyphicon glyphicon-arrow-right"></span>Category 2
+                </a>
+                <a href="#" class="list-group-item">
+                    <span class="glyphicon glyphicon-arrow-right"></span>Category 3
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">CreatedAt</th>
+                        <th scope="col">CreatedBy</th>
+                    </tr>
+                </thead>
+                @foreach (myform myform in user)
+                {
+                    <tbody>
+                        <tr>
+                            <th scope="row">@myform.name</th>
+                            @if (string.IsNullOrEmpty(myform.description) == false && myform.description.Length > 30)
+                            {
+                                <td>@(myform.description.Substring(0, 30)) <p>...</p></td>
+
+                            }
+                            else
+                            {
+                                <td>@myform.description</td>
+                            }
+
+                            <td>@myform.createdAt</td>
+                            <td>@myform.createdBy</td>
+                            <td><a href="/Home/Select/@myform.id" class="list-group-item">Formu Görüntüle  <span class="glyphicon glyphicon-arrow-right"></span></a></td>
+                        </tr>
+                    </tbody>
+                }
+                <tfoot>
+                    <tr class="warning no-result" style="display:none;">
+                        <td colspan="8"><i class="fa fa-warning"></i> Bulunamadı</td>
+                    </tr>
+                </tfoot>
+            </table>
+            <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-lg btn-block">Yeni Form Oluştur</button>
+
+
+            @using (Html.BeginForm())
+            {
+
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">Form Oluştur</h4>
+                            </div>
+                            <div class="modal-body">
+
+                                <form>
+                                    <div class="input-group ">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
+                                        @Html.TextBoxFor(model => model.myfromviewmodel.name, new { @class = "form-control", placeholder = "form name giriniz", type = "text" })
+
+                                    </div>
+                                    <div class="input-group ">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
+                                        @Html.TextBoxFor(model => model.myfromviewmodel.description, new { @class = "form-control", placeholder = "description giriniz", type = "text" })
+                                    </div>
+
+                                   
+                                </form>
+
+                                @{
+                                    formUser users = null;
+                                    users = Session["login"] as formUser;
+                                    Model.myfromviewmodel.createdBy = users.id;
+                                    Model.cek = users.id;
+                                }
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
+                                <button type="submit" href="#" class="btn btn-primary">Kaydet</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+
+        </div>
+    </div>
+</div>
+<!-- /.container -->
+<script>
+    $(".form-control").keyup(function () {
+        var searchTerm = $(".form-control").val();
+        var bulunan = 0
+        $('.table tbody tr').each(function (e) {
+            var table = $(this)
+            if (table.text().toLowerCase().includes(searchTerm.toLowerCase())) {
+                bulunan += 1
+                table.show()
+                $(".counter").text(bulunan + " kayıt bulundu")
+                $(".no-result").css('display', 'none')
+            } else {
+                table.hide()
+                $(".counter").text(bulunan + " kayıt bulundu")
+                if (bulunan == 0) {
+                    $(".no-result").css('display', '')
+                }
+            }
+        })
+    });
+</script>

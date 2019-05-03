@@ -1,0 +1,6 @@
+C:\Users\ebuci\source\repos\formSolution\form.Common\bin\Debug\form.Common.dll
+C:\Users\ebuci\source\repos\formSolution\form.Common\bin\Debug\form.Common.pdb
+C:\Users\ebuci\source\repos\formSolution\form.Common\obj\Debug\form.Common.csprojAssemblyReference.cache
+C:\Users\ebuci\source\repos\formSolution\form.Common\obj\Debug\form.Common.csproj.CoreCompileInputs.cache
+C:\Users\ebuci\source\repos\formSolution\form.Common\obj\Debug\form.Common.dll
+C:\Users\ebuci\source\repos\formSolution\form.Common\obj\Debug\form.Common.pdb

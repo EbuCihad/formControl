@@ -1,0 +1,45 @@
+﻿
+@model form.Entities.myform
+
+<!-- Page Content -->
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-9">
+             <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">CreatedAt</th>
+                        <th scope="col">CreatedBy</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row"> @Model.name</th>
+                        <td>@Model.description</td>
+                        <td>@Model.createdAt</td>
+                        <td>@Model.createdBy</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <form>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">AD</label>
+                    <input type="text" required="true" class="form-control" id="adid" aria-describedby="name" placeholder="AD">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">SOYAD</label>
+                    <input type="text" required="true" class="form-control" id="soyadid" aria-describedby="name" placeholder="SOYAD">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">YAS</label>
+                    <input type="text" required="false" class="form-control" id="yasid" aria-describedby="name" placeholder="YAS">
+                </div>
+                <button type="submit" class="btn btn-primary">Kaydet</button>
+            </form>           
+        </div>
+    </div>
+</div>

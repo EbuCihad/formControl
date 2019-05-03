@@ -1,0 +1,6 @@
+C:\Users\ebuci\source\repos\formSolution\form.Entities\bin\Debug\form.Entities.dll
+C:\Users\ebuci\source\repos\formSolution\form.Entities\bin\Debug\form.Entities.pdb
+C:\Users\ebuci\source\repos\formSolution\form.Entities\obj\Debug\form.Entities.csprojAssemblyReference.cache
+C:\Users\ebuci\source\repos\formSolution\form.Entities\obj\Debug\form.Entities.csproj.CoreCompileInputs.cache
+C:\Users\ebuci\source\repos\formSolution\form.Entities\obj\Debug\form.Entities.dll
+C:\Users\ebuci\source\repos\formSolution\form.Entities\obj\Debug\form.Entities.pdb
